@@ -36,4 +36,16 @@
 	return _credential;
 }
 
+-(id)oauthToken {
+	return [self credential].oauthToken;
+}
+
+-(id)oauthRefreshToken {
+	return [[self credential] oauthRefreshToken];
+}
+
+-(id)expiryDate {
+	return [[self credential] expiryDate];
+}
+
 @end

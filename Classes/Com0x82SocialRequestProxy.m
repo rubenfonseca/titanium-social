@@ -47,7 +47,14 @@
   NSDictionary *args = [value objectAtIndex:0];
   
   NSData *data = [(TiBlob*)[args objectForKey:@"data"] data];
-	NSString *fileName = [[(TiBlob *)[args objectForKey:@"data"] nativePath] lastPathComponent];
+  
+	NSString *fileName;
+  if([args objectForKey:@"filename"]) {
+    fileName = [TiUtils stringValue:@"filename" properties:args];
+  } else {
+    fileName = [[(TiBlob *)[args objectForKey:@"data"] nativePath] lastPathComponent];
+  }
+  
   NSString *string = [TiUtils stringValue:@"name" properties:args];
   NSString *type = [TiUtils stringValue:@"type" properties:args def:[(TiBlob*)[args objectForKey:@"data"] mimeType]];
   

@@ -15,4 +15,9 @@
 
 @property (nonatomic, retain) ACAccountCredential *credential;
 
+
+@property (nonatomic, readonly) NSString *oauthToken;
+@property (nonatomic, readonly) NSString *oauthRefreshToken;
+@property (nonatomic, readonly) NSDate *expiryDate;
+
 @end

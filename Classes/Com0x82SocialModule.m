@@ -97,7 +97,7 @@
 			}];
 		};
 		
-		UIViewController *rootViewController = [[TiApp app] controller].focusedViewController;
+		UIViewController *rootViewController = [[TiApp app] controller];
 		if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone || !options[@"rect"]) {
 			[rootViewController presentViewController:avc animated:animated completion:^{
 				[self fireEvent:@"activityWindowOpened" withObject:nil];

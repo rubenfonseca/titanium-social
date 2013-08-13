@@ -39,3 +39,16 @@ the public and private keys used by ssh. A token is a random string of letters
 and numbers that is unique and paired with a secret to protect the token from
 being abused. You initialize account credentials using this token and secret
 token.
+
+### - AccountCredential.oauthToken
+
+The token used for the credential. [STRING]
+
+### - AccountCredential.oauthRefreshToken
+
+The refresh token used for the credential. [STRING]
+
+### - AccountCredential.expiryDate
+
+The expiration date of the credential. [DATE]
+

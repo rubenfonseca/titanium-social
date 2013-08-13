@@ -22,6 +22,8 @@ function load_accounts() {
       account: account
     });
 
+    Ti.API.warn("---> " + account.credential.oauthToken);
+
     tableview.data = data;
   }
 }
@@ -37,7 +39,17 @@ store.grantPermission({
 });
 
 tableview.addEventListener('click', function(e) {
-  alert(e.rowData.account.identifier);
+  var account = e.rowData.account;
+  store.renewCredentialsForAccount(account, {
+    success: function(event) {
+      alert(event.result);
+    },
+    failure: function(event) {
+      alert(event.error);
+    }
+  });
+
+  // alert(e.rowData.account.identifier);
 });
 
 Ti.UI.currentWindow.add(tableview);

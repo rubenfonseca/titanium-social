@@ -60,6 +60,9 @@ Adds a binary object to the request, like an image. It accepts the following 3 r
 
 - *data*: a TiBlob with the data to add to the request
 
+- *filename*: the name of the file you're adding. If the Blob on the previous param
+  is not a file Blob, you need to pass this param to set the correct filename.
+
 - *type*: a mime type string
 
       var request = Social.createRequest({...})

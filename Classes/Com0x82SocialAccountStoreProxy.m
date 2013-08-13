@@ -150,7 +150,7 @@
 	}];
 }
 
--(id)renewCredentialsForAccount:(id)args {
+-(void)renewCredentialsForAccount:(id)args {
 	Com0x82SocialAccountProxy *account; ENSURE_ARG_AT_INDEX(account, args, 0, Com0x82SocialAccountProxy);
 	
 	NSDictionary *options; ENSURE_ARG_AT_INDEX(options, args, 1, NSDictionary);
