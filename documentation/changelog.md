@@ -1,3 +1,10 @@
+- 2013-09-29 Ruben Fonseca <fonseka@gmail.com>
+
+    * version 1.7 released
+
+    * Preparing the module for iOS 7
+
+
 - 2013-08-01 Ruben Fonseca <fonseka@gmail.com>
 
     * version 1.6 released

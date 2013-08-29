@@ -27,7 +27,7 @@
 				[self fireEvent:@"complete" withObject:@{ @"result" : @(result) }];
 			}
 			
-			[composeViewController dismissViewControllerAnimated:YES completion:nil];
+      [[TiApp app] hideModalController:composeViewController animated:YES];
 		};
 	}
 	
@@ -99,10 +99,10 @@
 -(void)open:(id)args {
 	ENSURE_UI_THREAD_0_ARGS
 	
-	UIViewController *controller = [[[TiApp app] controller] focusedViewController];
-	[controller presentViewController:[self composeViewController] animated:YES completion:nil];
+	//UIViewController *controller = [[[TiApp app] controller] focusedViewController];
+	//[controller presentViewController:[self composeViewController] animated:YES completion:nil];
 	
-//	[[TiApp app] showModalController:[self composeViewController] animated:YES];
+  [[TiApp app] showModalController:[self composeViewController] animated:YES];
 }
 
 @end

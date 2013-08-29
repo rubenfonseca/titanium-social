@@ -34,7 +34,7 @@ store.grantPermission({
     load_accounts();
   }, 
   denied: function(e) {
-    alert('Permission denied: ' + e.error);
+    Ti.UI.createAlertDialog({ message: 'Permission denied: ' + JSON.stringify(e) }).show();
   }
 });
 
