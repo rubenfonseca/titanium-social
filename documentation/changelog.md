@@ -1,3 +1,9 @@
+- 2013-10-03 Ruben Fonseca <fonseka@gmail.com>
+
+    * version 1.8 released
+
+    * Fixing crash that sometimes happend when the user refused to give permission to the social network.
+
 - 2013-09-29 Ruben Fonseca <fonseka@gmail.com>
 
     * version 1.7 released
