@@ -1,3 +1,10 @@
+- 2013-05-12 Ruben Fonseca <fonseka@gmail.com>
+
+    * version 1.9 released
+
+    * fixed a bug when opening the activity window on a modal window.
+
+
 - 2013-10-03 Ruben Fonseca <fonseka@gmail.com>
 
     * version 1.8 released

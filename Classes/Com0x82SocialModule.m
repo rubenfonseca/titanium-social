@@ -97,11 +97,9 @@
 			}];
 		};
 		
-		UIViewController *rootViewController = [[TiApp app] controller];
 		if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone || !options[@"rect"]) {
-			[rootViewController presentViewController:avc animated:animated completion:^{
-				[self fireEvent:@"activityWindowOpened" withObject:nil];
-			}];
+      [[TiApp app] showModalController:avc animated:animated];
+      [self fireEvent:@"activityWindowOpened" withObject:nil];
 		} else {
 			UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:avc];
 			popover.delegate = self;
@@ -112,7 +110,7 @@
 			int height = [rect[@"height"] intValue];
 			
 			CGRect rect = CGRectMake(x, y, width, height);
-			[popover presentPopoverFromRect:rect inView:rootViewController.view permittedArrowDirections:arrowDirection animated:animated];
+			[popover presentPopoverFromRect:rect inView:[[TiApp app] topMostView] permittedArrowDirections:arrowDirection animated:animated];
 		}
 		
 		[avc autorelease];
