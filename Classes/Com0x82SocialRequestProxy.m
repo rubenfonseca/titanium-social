@@ -67,7 +67,14 @@
 	[[self request] performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 		// Parse the responseData, which we asked to be in JSON format for this request, into an NSDictionary using NSJSONSerialization.
 		NSError *jsonParsingError = nil;
-		NSDictionary *output = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
+		NSDictionary *output = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonParsingError];
+    if(!output) {
+      output = @{};
+      
+      if(jsonParsingError)
+        NSLog(@"JSON Error: %@", [jsonParsingError localizedDescription]);
+    }
+    
 		NSString *rawOutput = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
 		
 		if ([urlResponse statusCode] == 200) {
