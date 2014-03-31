@@ -3,3 +3,4 @@ bin
 build
 modules/
 xcuserdata
+.DS_Store
