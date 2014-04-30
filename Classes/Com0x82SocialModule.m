@@ -70,7 +70,6 @@
 				NSURL *shareURL = [NSURL URLWithString:str];
 				if (shareURL != NULL) {
 					[items addObject:shareURL];
-					NSLog(@"share URL %@", shareURL);
 				} else {
 					[items addObject:obj];
 				}
