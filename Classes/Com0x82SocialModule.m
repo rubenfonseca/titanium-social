@@ -66,7 +66,13 @@
 		NSMutableArray *items = [NSMutableArray array];
 		[activityItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 			if([obj isKindOfClass:[NSString class]]) {
-				[items addObject:obj];
+				NSString * str = (NSString *) obj;
+				NSURL *shareURL = [NSURL URLWithString:str];
+				if (shareURL != NULL) {
+					[items addObject:shareURL];
+				} else {
+					[items addObject:obj];
+				}
 			} else if([obj isKindOfClass:[TiBlob class]]) {
 				[items addObject:((TiBlob *)obj).image];
 			} else {
