@@ -97,9 +97,11 @@ The following options are only valid on the iPad:
 Example:
 
     Social.showActivityItems({
-      activityItems: ["This is a text to share"],
+      activityItems: ["This is a text to share", "http://google.com"],
       excludedActivityTypes: [Social.UIActivityTypePostToWeibo]
     });
+
+Notice: if string in activityItemsArray is valid http URL it will be shared as NSURL
 
 This method fires the following two events:
 
