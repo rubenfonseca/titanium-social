@@ -85,7 +85,7 @@
 			NSMutableDictionary *failure_args = [NSMutableDictionary dictionary];
 			
 			[failure_args setValue:rawOutput forKey:@"data"];
-			[failure_args setValue:NUMINT([urlResponse statusCode]) forKey:@"status"];
+			[failure_args setValue:[urlResponse statusCode] forKey:@"status"];
 			if(error) {
 				[failure_args setValue:[error localizedDescription] forKey:@"error"];
 			}
