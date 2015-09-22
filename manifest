@@ -2,7 +2,8 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 2.0
+version: 2.1.0
+architectures: armv7 arm64 i386 x86_64
 apiversion: 2
 description: iOS6 and later Social.framework Titanium Mobile module
 author: Ruben Fonseca
@@ -15,4 +16,4 @@ name: social
 moduleid: com.0x82.social
 guid: d355cdec-34bf-4129-b2de-74265fb3e382
 platform: iphone
-minsdk: 2.1.1
+minsdk: 3.5.1.GA

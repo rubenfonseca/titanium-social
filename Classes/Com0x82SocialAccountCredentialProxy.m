@@ -41,11 +41,13 @@
 }
 
 -(id)oauthRefreshToken {
-	return [[self credential] oauthRefreshToken];
+    NSLog(@"[WARN] The attribute 'oauthRefreshToken' has been removed in iOS7.");
+	return @"";
 }
 
 -(id)expiryDate {
-	return [[self credential] expiryDate];
+    NSLog(@"[WARN] The attribute 'expiryDate' has been removed in iOS7.");
+    return @"";
 }
 
 @end
