@@ -78,14 +78,14 @@
 		NSString *rawOutput = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
 		
 		if ([urlResponse statusCode] == 200) {
-			NSDictionary *success_args = @{ @"status" : @([urlResponse statusCode]), @"data" : output, @"raw" : rawOutput };
+			NSDictionary *success_args = @{ @"status" : NUMLONG([urlResponse statusCode]), @"data" : output, @"raw" : rawOutput };
 			[self fireEvent:@"success" withObject:success_args];
 		}
 		else {
 			NSMutableDictionary *failure_args = [NSMutableDictionary dictionary];
 			
 			[failure_args setValue:rawOutput forKey:@"data"];
-			[failure_args setValue:[urlResponse statusCode] forKey:@"status"];
+			[failure_args setValue:NUMLONG([urlResponse statusCode]) forKey:@"status"];
 			if(error) {
 				[failure_args setValue:[error localizedDescription] forKey:@"error"];
 			}
