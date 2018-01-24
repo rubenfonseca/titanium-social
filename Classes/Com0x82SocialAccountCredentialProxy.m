@@ -37,16 +37,14 @@
   return [self credential].oauthToken;
 }
 
-- (id)oauthRefreshToken
-{
-  DebugLog(@"[ERROR] This property has been removed from iOS. Use the Facebook SDK to obtain this token");
-  return nil;
+-(id)oauthRefreshToken {
+    NSLog(@"[WARN] The attribute 'oauthRefreshToken' has been removed in iOS7.");
+	return @"";
 }
 
-- (id)expiryDate
-{
-  DebugLog(@"[ERROR] This property has been removed from iOS. Use the Facebook SDK to obtain this token");
-  return nil;
+-(id)expiryDate {
+    NSLog(@"[WARN] The attribute 'expiryDate' has been removed in iOS7.");
+    return @"";
 }
 
 @end
