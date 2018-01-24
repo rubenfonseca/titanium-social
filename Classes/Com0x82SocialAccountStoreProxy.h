@@ -9,7 +9,6 @@
 #import <Accounts/Accounts.h>
 
 @interface Com0x82SocialAccountStoreProxy : TiProxy {
-
 }
 
 @end

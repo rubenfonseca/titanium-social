@@ -11,74 +11,77 @@
 #import "TiUtils.h"
 
 @implementation Com0x82SocialAccountProxy {
-	ACAccount *account;
-	ACAccountType *accountType;
+  ACAccount *account;
+  ACAccountType *accountType;
 }
 
--(id)initWithAccount:(ACAccount *)otherAccount {
-	if(self = [super init]) {
-		account = [otherAccount retain];
-		accountType = [[otherAccount accountType] retain];
-	}
-	
-	return self;
+- (id)initWithAccount:(ACAccount *)otherAccount
+{
+  if (self = [super init]) {
+    account = otherAccount;
+    accountType = [otherAccount accountType];
+  }
+
+  return self;
 }
 
--(void)_initWithProperties:(NSDictionary *)properties {
-	[super _initWithProperties:properties];
-	
-	NSString *type = [properties valueForKey:@"type"];
-	if(!type) {
-		[self throwException:@"Account type required" subreason:@"twitter, facebook, sinaweibo" location:CODELOCATION];
-		
-		return;
-	}
-	
-	accountType = [[[[ACAccountStore alloc] init] autorelease] accountTypeWithAccountTypeIdentifier:type];
+- (void)_initWithProperties:(NSDictionary *)properties
+{
+  [super _initWithProperties:properties];
+
+  NSString *type = [properties valueForKey:@"type"];
+  if (!type) {
+    [self throwException:@"Account type required" subreason:@"twitter, facebook, sinaweibo" location:CODELOCATION];
+
+    return;
+  }
+
+  accountType = [[[ACAccountStore alloc] init] accountTypeWithAccountTypeIdentifier:type];
 }
 
--(ACAccount *)account {
-	if(account == nil) {
-		account = [[ACAccount alloc] initWithAccountType:accountType];
-	}
-	
-	return account;
-}
+- (ACAccount *)account
+{
+  if (account == nil) {
+    account = [[ACAccount alloc] initWithAccountType:accountType];
+  }
 
--(void)dealloc {
-	RELEASE_TO_NIL(accountType);
-	RELEASE_TO_NIL(account);
-	[super dealloc];
+  return account;
 }
 
 #pragma mark - Properties
--(id)description {
-	return [self account].accountDescription;
+- (id)description
+{
+  return [self account].accountDescription;
 }
 
--(id)identifier {
-	return [self account].identifier;
+- (id)identifier
+{
+  return [self account].identifier;
 }
 
--(id)username {
-	return [self account].username;
+- (id)username
+{
+  return [self account].username;
 }
 
--(id)credential {
-	Com0x82SocialAccountCredentialProxy *credentials = [[[Com0x82SocialAccountCredentialProxy alloc] init] autorelease];
-	credentials.credential = [self account].credential;
-	
-	return credentials;
+- (id)credential
+{
+  Com0x82SocialAccountCredentialProxy *credentials = [[Com0x82SocialAccountCredentialProxy alloc] init];
+  credentials.credential = [self account].credential;
+
+  return credentials;
 }
 
--(void)setUsername:(id)arg {
-	[self account].username = [TiUtils stringValue:arg];
+- (void)setUsername:(id)arg
+{
+  [self account].username = [TiUtils stringValue:arg];
 }
 
--(void)setCredential:(id)arg {
-	ENSURE_TYPE(arg, Com0x82SocialAccountCredentialProxy);
-	
-	[self account].credential = [(Com0x82SocialAccountCredentialProxy *)arg credential];
+- (void)setCredential:(id)arg
+{
+  ENSURE_TYPE(arg, Com0x82SocialAccountCredentialProxy);
+
+  [self account].credential = [(Com0x82SocialAccountCredentialProxy *)arg credential];
 }
 
 @end

@@ -7,7 +7,6 @@
 #import "TiProxy.h"
 
 @interface Com0x82SocialRequestProxy : TiProxy {
-
 }
 
 @end

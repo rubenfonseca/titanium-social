@@ -10,11 +10,9 @@
 #import <Accounts/Accounts.h>
 
 @interface Com0x82SocialAccountCredentialProxy : TiProxy {
-
 }
 
 @property (nonatomic, retain) ACAccountCredential *credential;
-
 
 @property (nonatomic, readonly) NSString *oauthToken;
 @property (nonatomic, readonly) NSString *oauthRefreshToken;
