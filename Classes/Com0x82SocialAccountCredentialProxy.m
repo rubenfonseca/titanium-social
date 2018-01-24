@@ -12,40 +12,41 @@
 @implementation Com0x82SocialAccountCredentialProxy
 @synthesize credential = _credential;
 
--(void)dealloc {
-	RELEASE_TO_NIL(_credential);
-	[super dealloc];
+- (ACAccountCredential *)credential
+{
+  if (_credential == nil) {
+    if ([self valueForUndefinedKey:@"oauth_token"]) {
+      NSString *token = [TiUtils stringValue:[self valueForUndefinedKey:@"oauth_token"]];
+      NSString *secret = [TiUtils stringValue:[self valueForUndefinedKey:@"token_secret"]];
+
+      _credential = [[ACAccountCredential alloc] initWithOAuthToken:token tokenSecret:secret];
+    } else if ([self valueForUndefinedKey:@"oauth2_token"]) {
+      NSString *token = [TiUtils stringValue:[self valueForUndefinedKey:@"oauth2_token"]];
+      NSString *refresh = [TiUtils stringValue:[self valueForUndefinedKey:@"refresh_token"]];
+      NSDate *expires_at = (NSDate *)[self valueForUndefinedKey:@"expiricy_date"];
+
+      _credential = [[ACAccountCredential alloc] initWithOAuth2Token:token refreshToken:refresh expiryDate:expires_at];
+    }
+  }
+
+  return _credential;
 }
 
--(ACAccountCredential *)credential {
-	if(_credential == nil) {
-		if([self valueForUndefinedKey:@"oauth_token"]) {
-			NSString *token  = [TiUtils stringValue:[self valueForUndefinedKey:@"oauth_token"]];
-			NSString *secret = [TiUtils stringValue:[self valueForUndefinedKey:@"token_secret"]];
-			
-			_credential = [[ACAccountCredential alloc] initWithOAuthToken:token tokenSecret:secret];
-		} else if([self valueForUndefinedKey:@"oauth2_token"]) {
-			NSString *token   = [TiUtils stringValue:[self valueForUndefinedKey:@"oauth2_token"]];
-			NSString *refresh = [TiUtils stringValue:[self valueForUndefinedKey:@"refresh_token"]];
-			NSDate *expires_at = (NSDate *)[self valueForUndefinedKey:@"expiricy_date"];
-			
-			_credential = [[ACAccountCredential alloc] initWithOAuth2Token:token refreshToken:refresh expiryDate:expires_at];
-		}
-	}
-	
-	return _credential;
+- (id)oauthToken
+{
+  return [self credential].oauthToken;
 }
 
--(id)oauthToken {
-	return [self credential].oauthToken;
+- (id)oauthRefreshToken
+{
+  DebugLog(@"[ERROR] This property has been removed from iOS. Use the Facebook SDK to obtain this token");
+  return nil;
 }
 
--(id)oauthRefreshToken {
-	return [[self credential] oauthRefreshToken];
-}
-
--(id)expiryDate {
-	return [[self credential] expiryDate];
+- (id)expiryDate
+{
+  DebugLog(@"[ERROR] This property has been removed from iOS. Use the Facebook SDK to obtain this token");
+  return nil;
 }
 
 @end

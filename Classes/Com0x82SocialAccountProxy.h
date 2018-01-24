@@ -13,6 +13,6 @@
 
 @property (nonatomic, readonly) ACAccount *account;
 
--(id)initWithAccount:(ACAccount *)account;
+- (id)initWithAccount:(ACAccount *)account;
 
 @end

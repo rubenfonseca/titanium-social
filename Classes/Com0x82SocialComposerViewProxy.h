@@ -9,6 +9,7 @@
 #import <Social/Social.h>
 
 @interface Com0x82SocialComposerViewProxy : TiProxy {
+  SLComposeViewController *composeViewController;
 }
 
 @end

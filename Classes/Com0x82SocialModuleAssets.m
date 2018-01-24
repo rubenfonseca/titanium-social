@@ -3,13 +3,13 @@
  */
 #import "Com0x82SocialModuleAssets.h"
 
-extern NSData* filterDataInRange(NSData* thedata, NSRange range);
+extern NSData *filterDataInRange(NSData *thedata, NSRange range);
 
 @implementation Com0x82SocialModuleAssets
 
-- (NSData*) moduleAsset
+- (NSData *)moduleAsset
 {
-	return nil;
+  return nil;
 }
 
 @end

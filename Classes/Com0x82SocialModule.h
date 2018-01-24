@@ -6,8 +6,7 @@
  */
 #import "TiModule.h"
 
-@interface Com0x82SocialModule : TiModule <UIPopoverControllerDelegate>
-{
+@interface Com0x82SocialModule : TiModule <UIPopoverControllerDelegate> {
 }
 
 @end
